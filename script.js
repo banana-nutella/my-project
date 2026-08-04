@@ -9,5 +9,6 @@ async function handleButtonClick() {
     });
     const output = await response.json();
     const simplifiedText = output.simplifiedText;
-    console.log(simplifiedText);
+    const resultBoxElement = document.getElementById("resultBox")
+    resultBoxElement.innerText = simplifiedText;
 }
