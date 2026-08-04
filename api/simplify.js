@@ -1,5 +1,6 @@
 export default async function handler(req, res) {
     const userText = req.body.text;
+    const usergradeLevel = req.body.gradeLevel
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
@@ -12,7 +13,7 @@ export default async function handler(req, res) {
             model: "claude-haiku-4-5-20251001",
             max_tokens: 1000,
             messages: [
-                {role: "user", content: `Simplify this text to a 4th grade reading level: ${userText}`}
+                {role: "user", content: `Simplify this text to a grade ${usergradeLevel} reading level: ${userText}`}
             ]
         })})
     const data = await response.json();
