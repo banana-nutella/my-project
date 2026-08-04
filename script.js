@@ -3,10 +3,11 @@ async function handleButtonClick() {
     const enteredText = textareaElement.value;
 
     const response = await fetch("/api/simplify", {
-        method:"POST",
+        method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({text: enteredText})
     });
-    response = JSON.parse(response)
-    console.log(response)
+    const output = await response.json();
+    const simplifiedText = output.simplifiedText;
+    console.log(simplifiedText);
 }
